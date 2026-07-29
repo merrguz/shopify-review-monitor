@@ -129,28 +129,48 @@ def parse_summary(html: str) -> dict:
         if total is None and ld.get("reviewCount") is not None:
             total = int(ld["reviewCount"])
 
-    if total is None:
-        total = 0 if _is_reviewless_page(soup, text) else None
+    if rating is None:
+        # Not every listing publishes aggregateRating in its JSON-LD --
+        # userway-accessibility doesn't, while accesswidget does. The Twitter
+        # card meta tags carry it as "2.4/5" on both. Cosmetic (nothing branches
+        # on this value) but a None here makes doctor output look broken.
+        rating = _twitter_card_rating(soup)
+
+    if total is None and _looks_like_a_reviews_page(soup, text):
+        # An app with no reviews renders "## Reviews" with no "(N)" -- there is no
+        # count to find. The per-rating buckets are still rendered (all zeros), so
+        # their sum is the count.
+        #
+        # An earlier version treated the presence of "Counts per rating level" as
+        # proof that reviews existed, and therefore reported every review-less app
+        # as a parse failure. On a 53-app watchlist where 31 apps have no reviews,
+        # that meant 31 false alarms per run -- enough to get the alert channel
+        # muted, which would in turn hide a real breakage. Hence the care here.
+        total = sum(buckets.values())
+
+    if total == 0:
+        # Guard the other direction: if the count says zero but review blocks are
+        # visibly present, then the count parsing broke and we must not report a
+        # comfortable "no reviews".
+        blocks, _ = find_review_blocks(soup)
+        if blocks:
+            log.warning(
+                "review count parsed as 0 but %d review blocks are present", len(blocks)
+            )
+            total = None
 
     return {"total": total, "buckets": buckets, "rating": rating}
 
 
-def _is_reviewless_page(soup: BeautifulSoup, text: str) -> bool:
-    """True when this is a valid reviews page for an app that simply has none.
+def _looks_like_a_reviews_page(soup: BeautifulSoup, text: str) -> bool:
+    """True if this is a real app reviews page, however many reviews it has.
 
-    The tell is asymmetric and worth stating plainly:
-
-    - "Counts per rating level" only renders when reviews exist. If it's present
-      but we couldn't parse a total, the markup genuinely changed -> not this case.
-    - Otherwise, if the page still carries the structural furniture of a real app
-      reviews page (a canonical URL ending in /reviews, or a "Write a review"
-      call to action), it's a live listing with an empty review list -> zero.
-    - Anything else (an error page, a challenge page, a truncated response) is
-      indeterminate, and the caller should fail loudly.
+    Distinguishes "valid page, nothing to report" from "we got served something
+    unexpected" -- an error page, a bot challenge, a truncated response. Only the
+    latter should trip the dead-man's switch.
     """
-    if "Counts per rating level" in text:
-        return False
-
+    if "No reviews yet" in text:
+        return True
     canonical = soup.find("link", rel="canonical")
     if canonical and str(canonical.get("href", "")).rstrip("/").endswith("/reviews"):
         return True
@@ -159,7 +179,34 @@ def _is_reviewless_page(soup: BeautifulSoup, text: str) -> bool:
     )
     if og and "apps.shopify.com" in str(og.get("content", "")):
         return True
-    return "Write a review" in text
+    return "Write a review" in text and "Counts per rating level" in text
+
+
+STAR_FRACTION_RE = re.compile(r"^\s*([0-5](?:\.\d+)?)\s*/\s*5\s*$")
+
+
+def _twitter_card_rating(soup: BeautifulSoup) -> Optional[float]:
+    """Read the overall star rating out of the Twitter card meta tags.
+
+    Shopify renders it as a data/value pair, e.g.
+        <meta name="twitter:value2" content="Star rating">
+        <meta name="twitter:data2"  content="2.4/5">
+
+    Matching on the "N/5" shape rather than trusting the index means it still
+    works if Shopify reorders the pairs (the other pair is pricing, which never
+    looks like "N/5").
+    """
+    for tag in soup.find_all("meta"):
+        name = tag.get("name") or tag.get("property") or ""
+        if not str(name).startswith("twitter:data"):
+            continue
+        m = STAR_FRACTION_RE.match(str(tag.get("content", "")))
+        if m:
+            try:
+                return float(m.group(1))
+            except ValueError:
+                continue
+    return None
 
 
 def _jsonld_aggregate(soup: BeautifulSoup) -> Optional[dict]:

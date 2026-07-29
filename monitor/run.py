@@ -107,7 +107,26 @@ def cmd_run(args) -> int:
         })
 
     if unhealthy:
-        log.warning("%d targets reported problems", len(unhealthy))
+        # Log every note BEFORE attempting Slack. The first real run lost all 30
+        # diagnostics because the Slack alert was rejected and the notes lived
+        # nowhere else -- a diagnostic channel that vanishes precisely when
+        # something is wrong is worse than none.
+        log.warning("%d of %d targets reported problems:", len(unhealthy), len(healths))
+        for h in unhealthy:
+            level = log.error if not h.ok else log.warning
+            for note in (h.notes or ["(no detail recorded)"]):
+                level(
+                    "  %s %-45s %s",
+                    "FAIL" if not h.ok else "warn", h.target, note,
+                )
+        log.warning(
+            "counts per target: %s",
+            ", ".join(
+                f"{h.target}={h.negative_parsed}/{h.negative_expected}"
+                for h in unhealthy
+                if h.negative_expected
+            ) or "(none had expected negatives)",
+        )
         slack.notify_health(unhealthy)
 
     state.save()

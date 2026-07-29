@@ -87,7 +87,7 @@ extracted. A healthy run prints real review text, store names and countries, and
 ends with `doctor: all checks passed.`
 
 **Why this step exists:** the parser was written without access to a live browser,
-so while the extraction logic is covered by 48 unit and integration tests, the
+so while the extraction logic is covered by 68 unit and integration tests, the
 CSS selectors it tries first have not been confirmed against the real DOM. If the
 selectors miss, the structural fallback should still work — `doctor` tells you
 which strategy matched (`selector:...` vs `heuristic:...`). Either is fine.
@@ -116,7 +116,7 @@ python -m monitor doctor accesswidget patrol  # ...for specific handles
 python -m monitor run --dry-run               # full poll, log instead of send
 python -m monitor run                         # the real thing
 python -m monitor backfill                    # mark existing as seen, notify nobody
-python -m pytest -q                           # 48 tests, no network needed
+python -m pytest -q                           # 68 tests, no network needed
 ```
 
 ---
@@ -197,12 +197,19 @@ Specifically it alerts when
 - an unrecognized country name appears (which would shift fields by one line),
 - the DOM rating contradicts the requested rating filter.
 
-It deliberately does **not** alert on an app that simply has no reviews. 31 of the
-55 monitored apps have none at all, and their pages render a bare "Reviews"
-heading with no count — reading that as a parse failure would fire the switch on
-most of the watchlist every hour, which is how an alert channel gets muted and
-then ignored. `parse_summary()` separates "zero" from "broken" by checking for the
-"Counts per rating level" section, which only renders when reviews exist.
+It deliberately does **not** alert on an app that simply has no reviews. 30 of the
+53 monitored apps have none, and their pages render `## Reviews` with no `(N)` —
+there is no count to parse. Reading that as a failure fired 30 false alarms on the
+very first live run, which is how an alert channel gets muted and then ignored.
+
+Getting this right was fiddly enough to be worth stating: Shopify renders the
+"Counts per rating level" scaffold *with all zeros* on review-less pages, so its
+presence does **not** prove reviews exist. `parse_summary()` instead treats a page
+as valid-but-empty when it carries reviews-page furniture (a canonical URL ending
+in `/reviews`, or the literal string "No reviews yet") and takes the bucket sum as
+the count. It guards the opposite direction too: if the count parses as zero but
+review blocks are visibly present on the page, that's a hard failure rather than a
+comfortable zero.
 
 Health notes are written into `state/seen.json` under `meta`, so the git history
 of that file is a running record of scraper health.

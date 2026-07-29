@@ -254,41 +254,128 @@ def test_real_config_parses_and_has_no_duplicates():
 
 # ------------------------------------ apps with no reviews at all (31 of ~55)
 
+# A faithful reproduction of a real zero-review page, transcribed from
+# apps.shopify.com/kokua/reviews on 2026-07-29. Note that the rating scaffold IS
+# rendered with all zeros, and the heading has no "(N)".
 REVIEWLESS_PAGE = (
     '<html><head>'
     '<link rel="canonical" href="https://apps.shopify.com/kokua/reviews">'
     '<meta property="og:url" content="https://apps.shopify.com/kokua">'
+    '<meta name="twitter:data2" content="0.0/5">'
     '</head><body>'
-    '<h1>Kokua - Accessibility Scanner</h1>'
-    '<h2>Reviews</h2>'          # note: no "(N)"
+    '<h1>K\u014dkua \u2014 Accessibility Scanner</h1>'
+    '<h2>Reviews</h2>'
+    '<div>Overall rating</div><div>0</div>'
+    '<div>Counts per rating level</div>'
+    '<ul>'
+    + "".join(
+        f'<li><div>{s}</div><div>0% of ratings are {s} stars</div><div>0</div></li>'
+        for s in (5, 4, 3, 2, 1)
+    )
+    + '</ul>'
     '<div>Write a review</div>'
+    '<div>No reviews yet</div>'
     '</body></html>'
 )
 
 
 def test_app_with_zero_reviews_reports_total_zero_not_failure():
-    """31 of the monitored apps have no reviews. Their pages show a bare
-    "Reviews" heading with no count. If that read as a parse failure the
-    dead-man's switch would scream on most of the watchlist every hour."""
+    """31 of the 53 monitored apps have no reviews. Reporting those as parse
+    failures produced 31 false alarms per run on the first live run -- enough to
+    get the alert channel muted, which would then hide a real breakage."""
     s = parse_summary(REVIEWLESS_PAGE)
     assert s["total"] == 0
     assert all(v == 0 for v in s["buckets"].values())
+    assert s["rating"] == pytest.approx(0.0)
+
+
+def test_rating_scaffold_alone_does_not_imply_reviews_exist():
+    """The regression that caused those false alarms: "Counts per rating level"
+    renders on zero-review pages too, so it cannot be used as proof."""
+    assert "Counts per rating level" in REVIEWLESS_PAGE
+    assert parse_summary(REVIEWLESS_PAGE)["total"] == 0
 
 
 def test_genuinely_broken_page_still_reports_none():
-    """No count, no structural furniture -> indeterminate, must fail loudly."""
+    """No count, no reviews-page furniture -> indeterminate, must fail loudly."""
     s = parse_summary("<html><body><p>Something went wrong</p></body></html>")
     assert s["total"] is None
 
 
-def test_missing_count_alongside_rating_buckets_is_a_failure():
-    """"Counts per rating level" only renders when reviews exist, so its
-    presence without a parseable total means the markup really did change."""
+def test_bot_challenge_page_reports_none():
+    html = "<html><body><h1>Just a moment...</h1><p>Checking your browser</p></body></html>"
+    assert parse_summary(html)["total"] is None
+
+
+def test_zero_count_contradicted_by_visible_reviews_is_a_failure():
+    """The other direction: if the count parses as 0 but review blocks are right
+    there on the page, the count parsing broke. Never report a comfortable zero."""
     html = (
-        '<html><head><link rel="canonical" '
-        'href="https://apps.shopify.com/accesswidget/reviews"></head><body>'
-        '<h2>Reviews</h2><div>Counts per rating level</div>'
-        '<div>73% of ratings are 5 stars</div>'
-        '</body></html>'
+        '<html><head>'
+        '<link rel="canonical" href="https://apps.shopify.com/accesswidget/reviews">'
+        '</head><body><h2>Reviews</h2><div>Counts per rating level</div>'
+        '<div data-merchant-review="true">'
+        '<div>March 3, 2026</div><p>Terrible.</p>'
+        '<div><div>A Store</div><div>Canada</div><div>2 days using the app</div></div>'
+        '</div></body></html>'
     )
     assert parse_summary(html)["total"] is None
+
+
+def test_missing_count_with_nonzero_buckets_uses_the_bucket_sum():
+    html = (
+        '<html><head>'
+        '<link rel="canonical" href="https://apps.shopify.com/x/reviews">'
+        '</head><body><h2>Reviews</h2><div>Counts per rating level</div>'
+        '<a href="/x/reviews?ratings%5B%5D=5">7</a>'
+        '<a href="/x/reviews?ratings%5B%5D=1">2</a>'
+        '</body></html>'
+    )
+    assert parse_summary(html)["total"] == 9
+
+
+# ------------------------------------------- overall rating fallback
+
+def test_rating_falls_back_to_twitter_card_when_jsonld_lacks_it():
+    """userway-accessibility publishes no aggregateRating in its JSON-LD but does
+    expose "2.4/5" in the Twitter card meta tags. Observed live 2026-07-29."""
+    html = (
+        '<html><head>'
+        '<link rel="canonical" href="https://apps.shopify.com/userway-accessibility/reviews">'
+        '<meta name="twitter:value1" content="Pricing">'
+        '<meta name="twitter:data1" content="Free plan available">'
+        '<meta name="twitter:value2" content="Star rating">'
+        '<meta name="twitter:data2" content="2.4/5">'
+        '</head><body><h2>Reviews (9)</h2>'
+        '<div>Counts per rating level</div>'
+        '<a href="/userway-accessibility/reviews?ratings%5B%5D=1">3</a>'
+        '</body></html>'
+    )
+    s = parse_summary(html)
+    assert s["total"] == 9
+    assert s["rating"] == pytest.approx(2.4)
+
+
+def test_jsonld_rating_wins_over_twitter_card():
+    html = (
+        '<html><head>'
+        '<meta name="twitter:data2" content="1.1/5">'
+        '<script type="application/ld+json">'
+        '{"aggregateRating":{"ratingValue":"3.5","reviewCount":"15"}}'
+        '</script></head><body><h2>Reviews (15)</h2></body></html>'
+    )
+    assert parse_summary(html)["rating"] == pytest.approx(3.5)
+
+
+def test_pricing_meta_is_not_mistaken_for_a_rating():
+    """The other twitter:data pair is pricing text. Must not parse as a rating."""
+    html = (
+        '<html><head>'
+        '<meta name="twitter:data1" content="Free to install">'
+        '<meta name="twitter:data2" content="From $19/month">'
+        '<link rel="canonical" href="https://apps.shopify.com/kokua/reviews">'
+        '</head><body><h2>Reviews</h2><div>Write a review</div></body></html>'
+    )
+    s = parse_summary(html)
+    assert s["rating"] is None
+    assert s["total"] == 0

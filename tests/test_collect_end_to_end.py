@@ -189,3 +189,53 @@ def test_reviewless_app_is_healthy_and_silent(monkeypatch):
     assert health.notes == []
     assert health.total_reviews_seen == 0
     assert len(calls) == 1
+
+
+REVIEWLESS_HTML = (
+    '<html><head>'
+    '<link rel="canonical" href="https://apps.shopify.com/kokua/reviews">'
+    '<meta name="twitter:data2" content="0.0/5">'
+    '</head><body><h2>Reviews</h2>'
+    '<div>Overall rating</div><div>0</div>'
+    '<div>Counts per rating level</div>'
+    + "".join(
+        f'<li><div>{s}</div><div>0% of ratings are {s} stars</div><div>0</div></li>'
+        for s in (5, 4, 3, 2, 1)
+    )
+    + '<div>Write a review</div><div>No reviews yet</div>'
+    + ("x" * 2500) + '</body></html>'
+)
+
+
+def test_reviewless_app_produces_no_health_noise(monkeypatch):
+    """Regression guard for the 31-false-alarms-per-run bug. A live listing with
+    no reviews must be ok, silent, and cost exactly one request."""
+    calls = []
+
+    def fake_get(url, *, params=None, **kw):
+        calls.append((url, params))
+        return REVIEWLESS_HTML
+
+    monkeypatch.setattr(shopify_mod.http, "get", fake_get)
+    reviews, health = ShopifySource().collect(
+        {"handle": "kokua", "name": "Kokua", "bucket": "scanner"}, DEFAULTS
+    )
+    assert reviews == []
+    assert health.ok is True
+    assert health.notes == [], f"expected silence, got {health.notes}"
+    assert health.total_reviews_seen == 0
+    assert len(calls) == 1
+
+
+def test_whole_watchlist_of_reviewless_apps_stays_quiet(monkeypatch):
+    """The shape of the production failure: most of the watchlist has no reviews.
+    None of them should report a problem."""
+    monkeypatch.setattr(shopify_mod.http, "get", lambda url, **kw: REVIEWLESS_HTML)
+    src = ShopifySource()
+    healths = [
+        src.collect({"handle": f"app-{i}", "name": f"App {i}", "bucket": "scanner"},
+                    DEFAULTS)[1]
+        for i in range(31)
+    ]
+    noisy = [h for h in healths if not h.ok or h.notes]
+    assert noisy == [], f"{len(noisy)} of 31 review-less apps reported problems"

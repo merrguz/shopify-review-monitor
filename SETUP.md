@@ -1,8 +1,8 @@
 # Setup — GitHub Actions, web UI
 
-Nine steps, ~20 minutes. **You don't need Python installed.** Every verification
-step runs inside Actions, so the only terminal work is three `git` commands in
-step 3 to get the files onto GitHub.
+Nine steps, ~20 minutes. **You don't need Python installed, and with GitHub
+Desktop you don't need the terminal either.** Every verification step runs inside
+GitHub Actions.
 
 The order matters: the schedule is deliberately disarmed until step 8, so you can
 confirm the parser works and swallow the ~27 existing negative reviews before any
@@ -50,33 +50,91 @@ First, **unzip `shopify-review-monitor.zip` somewhere permanent** — `~/Develop
 or wherever you keep code. Don't work inside the Downloads folder or the temporary
 folder Claude wrote it to; that gets cleared.
 
-Then on github.com: **+** (top right) → **New repository**.
+**Pick ONE of the two paths below and follow it end to end.** They create the
+GitHub repo in different places — mixing them leaves you with a half-configured
+remote and errors that look unrelated to the real cause.
 
-- Owner: your TestParty org (or your user account)
+---
+
+### Path A — GitHub Desktop (recommended)
+
+Handles authentication, repo creation, and the push in one flow. No tokens.
+
+**Do not create the repo on github.com first** — Desktop creates it for you, and
+it will refuse to publish if a repo with that name already exists. If you already
+made an empty one, delete it (repo → **Settings** → bottom of the page → **Delete
+this repository**; it's empty, nothing is lost).
+
+1. Install [GitHub Desktop](https://desktop.github.com), open it, sign in. It
+   sends you through the browser — that's your auth done.
+2. **File → Add Local Repository**
+3. Choose the unzipped folder → **Add Repository**. If you already ran `git init`
+   and committed, Desktop picks that up; if not, it offers to create the repo.
+4. Click **Publish repository** in the top bar.
+5. Name it `shopify-review-monitor`, leave **Keep this code private** ticked,
+   **Publish repository**.
+
+Refresh github.com — all 30 files should be there. Skip Path B entirely.
+
+---
+
+### Path B — Terminal
+
+First create the repo on github.com: **+** (top right) → **New repository**.
+
+- Owner: your TestParty org, or your personal account
 - Name: `shopify-review-monitor`
 - **Private** ← important, the state file will contain scraped review data
 - Do **not** add a README, .gitignore, or licence — the folder already has them
+- Leave the page open; you'll need the URL in a moment
 
-Now push. In Terminal, from inside the unzipped folder:
+Then:
 
 ```bash
-cd ~/Developer/shopify-review-monitor      # wherever you unzipped it
+cd ~/Documents/Developer/shopify-review-monitor    # wherever you actually unzipped it
+git config --global user.name  "Your Name"
+git config --global user.email "you@testparty.ai"
 git init
 git add .
 git commit -m "Competitor negative-review monitor"
 git branch -M main
-git remote add origin https://github.com/YOUR-ORG/shopify-review-monitor.git
+```
+
+Now set the remote. **Don't copy the URL below** — go to your new empty repo on
+github.com and copy the HTTPS URL from the green **Code** button, then:
+
+```bash
+git remote set-url origin <paste-the-url-here>   # or `git remote add origin ...` the first time
 git push -u origin main
 ```
 
-> **No terminal at all?** Install [GitHub Desktop](https://desktop.github.com),
-> then **File → Add Local Repository** → point it at the unzipped folder → it will
-> offer to create a repository → **Publish repository**, with "Keep this code
-> private" left ticked.
->
+**Authentication: your GitHub password will not work.** GitHub disabled password
+auth for git in 2021. If you see
+`remote: Invalid username or token. Password authentication is not supported`,
+that's this — you need a token:
+
+1. github.com → avatar → **Settings** → **Developer settings** (bottom of the left
+   sidebar) → **Personal access tokens** → **Tokens (classic)** →
+   **Generate new token (classic)**
+2. Tick the top-level **`repo`** scope. Nothing else is needed.
+3. **Generate token** and copy it — it's not shown again.
+4. `git config --global credential.helper osxkeychain` so you only do this once.
+5. Push again. Username = your GitHub username, **password = the token**.
+
+### Common mistakes here
+
+| What you'll see | Cause |
+|---|---|
+| `cd: no such file or directory` | You're not where you unzipped it. `pwd` to check, or drag the folder onto the Terminal icon in Finder. |
+| `Authentication failed` after entering your password | Password auth is dead. Use a token (above). |
+| `error: remote origin already exists` | Use `git remote set-url origin ...` instead of `git remote add`. |
+| `fatal: 'origin' does not appear to be a git repository` | There's no remote set. You're mixing Path A and Path B — run `git remote -v`; if it's empty, either finish in GitHub Desktop or `git remote add origin <url>`. |
+| `Repository not found` | The remote URL has a typo, or you never created the repo, or it's under a different owner than the URL says. |
+| `nothing to commit, working tree clean` | Already committed. Harmless — skip ahead to the push. |
+
 > **Avoid the drag-and-drop uploader on github.com.** It silently skips the
 > `.github/` folder because it starts with a dot, and without that folder no
-> workflow exists and nothing in this guide past step 4 will work.
+> workflow exists and nothing past step 4 will work.
 
 ---
 
@@ -114,13 +172,14 @@ userway-accessibility
 ========================================================================
   total reviews : 9
   overall rating: 2.4
-  buckets       : {5: 6, 4: 0, 3: 0, 2: 0, 1: 3}
-
+  buckets       : {5: 6, 1: 3, 4: 0, 3: 0, 2: 0}
   rating 1: expected 3, found 3 blocks via selector:[data-merchant-review]
     - 2025-07-29 | 1* | 'JCS Wildlife' ('United States') | 'Over 1 year using the app'
       text: This is very expensive. And we're being told this doesn't work very well....
 ...
 doctor: all checks passed.
+
+Confirmed working live on 2026-07-29 against both apps.
 ```
 
 The two things to check: **real review text appears**, and the numbers after
@@ -161,6 +220,10 @@ deliberate.
 ---
 
 ## 7. Backfill
+
+> **Already ran `run` without ticking dry_run?** Then this is already done — the
+> reviews were delivered and recorded, and you can skip to step 9. Check Clay and
+> Slack to confirm they arrived.
 
 **Run workflow** → command `backfill` → **Run workflow**.
 
