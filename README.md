@@ -12,15 +12,21 @@ Runs every 2 hours on GitHub Actions. Costs nothing.
 
 ## Read this first: what this signal actually is
 
-Across the entire Shopify accessibility category there are roughly **27 negative
-reviews in existence**, accruing at maybe **1–3 per month**. accessiBe has 3.
-UserWay has 3. Most of the 55 apps being monitored have zero.
+**60 apps monitored, ~46 negative reviews in existence, arriving at maybe 2–5 per
+month.** accessiBe has 3. UserWay has 3. Thirty of the sixty apps have no reviews
+at all.
 
 That's not a bug in the tooling — it's the size of the signal. Each lead is
 excellent (a merchant publicly complaining that an overlay didn't deliver
 compliance is about as warm as intent gets), but this is a trickle, not a
-pipeline. Set expectations accordingly, and see "Where the volume actually is"
-at the bottom.
+pipeline.
+
+Worth understanding *why* it's so small: the Shopify App Store is a narrow window
+onto these vendors. accessiBe has 15 reviews there in total — that is not a
+company with 15 customers, it's a company that sells direct and collected a $1M
+FTC order in 2025. Its unhappy customers are on Trustpilot, G2, and in court
+filings. So ~46 is not the amount of dissatisfaction with overlay vendors; it's
+the amount visible through this one channel. See "Where the volume actually is".
 
 ---
 
@@ -87,7 +93,7 @@ extracted. A healthy run prints real review text, store names and countries, and
 ends with `doctor: all checks passed.`
 
 **Why this step exists:** the parser was written without access to a live browser,
-so while the extraction logic is covered by 68 unit and integration tests, the
+so while the extraction logic is covered by 71 unit and integration tests, the
 CSS selectors it tries first have not been confirmed against the real DOM. If the
 selectors miss, the structural fallback should still work — `doctor` tells you
 which strategy matched (`selector:...` vs `heuristic:...`). Either is fine.
@@ -116,7 +122,7 @@ python -m monitor doctor accesswidget patrol  # ...for specific handles
 python -m monitor run --dry-run               # full poll, log instead of send
 python -m monitor run                         # the real thing
 python -m monitor backfill                    # mark existing as seen, notify nobody
-python -m pytest -q                           # 68 tests, no network needed
+python -m pytest -q                           # 71 tests, no network needed
 ```
 
 ---
@@ -238,12 +244,19 @@ grouped by `bucket`:
 | `overlay` | overlay/widget vendors — the core competitor set | on |
 | `code-fix` | source-code remediation, TestParty's direct positioning | on |
 | `scanner` | audit/scan/monitoring only | on |
-| `alt-text` | image alt-text SEO tools | **off** |
+| `alt-text` | image alt-text SEO tools | on (trial) |
 | `gdpr-bundle` | cookie apps that bundle an a11y widget | **off** |
 
-alt-text and gdpr-bundle are disabled because they carry high review volume and
-almost no buying signal — Pandectes alone has 2,876 reviews, nearly all about
-cookie banners. Flip `enabled: true` if you want the extra surface.
+**gdpr-bundle is disabled** — Consentmo and Pandectes have ~4,700 reviews between
+them, nearly all about cookie banners. That's ~25 negatives of pure noise.
+
+**alt-text is on as a trial.** It roughly doubles volume (~21 more negatives,
+16 of them on `alttext-ai` alone). The case for it: alt text is WCAG 1.1.1, and a
+merchant who bought an alt-text tool has solved images and nothing else — partial
+coverage is an opening. The case against: reading their actual negative reviews,
+most are about credit consumption and billing rather than accessibility failure.
+They arrive in Slack tagged `alt-text tool`, so judge for yourself and disable the
+block if it's noise.
 
 Per-app overrides: `max_rating` (default 3) and `pages` (default 1; one page
 comfortably covers apps with single-digit negative counts).

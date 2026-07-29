@@ -190,36 +190,36 @@ apps:
     name: shoplab - Accessibility Check
     bucket: scanner
 
-  # ------------------------------------------------- alt-text (off by default)
-  # High review volume, weak buying signal. Turn on if you want the extra surface.
+  # ---------------------------------------------------------------- alt-text
+  # ENABLED 2026-07-29 as a deliberate trial. Alt text is WCAG 1.1.1, and these
+  # merchants demonstrably care about compliance -- but reading their actual
+  # negative reviews, most complaints are about credit consumption and billing
+  # rather than accessibility failure. ~21 negatives across these 7 apps, roughly
+  # doubling the monitor's volume.
+  #
+  # Judge them in Slack for a few weeks (they arrive tagged "alt-text tool").
+  # To turn them back off, re-add the disable flag to each entry in this block.
   - handle: alt-text-automator-by-starapps
     name: "AltKing: AI Alt Text SEO & ADA"
     bucket: alt-text
-    enabled: false
   - handle: alttext-ai
-    name: ATAI - AltText.ai
+    name: ATAI - AltText.ai      # 143 reviews, 16 negatives: the busiest app here
     bucket: alt-text
-    enabled: false
   - handle: altseo-ai-alt-text-generator
     name: "ALT SEO: AI Alt Text Generator"
     bucket: alt-text
-    enabled: false
   - handle: ai-alt-text-entangle
     name: Rocket AI Alt Text Generator
     bucket: alt-text
-    enabled: false
   - handle: smartalt-ai-alt-text
     name: SmartAlt - AI SEO Alt Text
     bucket: alt-text
-    enabled: false
   - handle: semantic
     name: "Semantic: AI Image Alt Text SEO"
     bucket: alt-text
-    enabled: false
   - handle: altguard-1
     name: AltGuard
     bucket: alt-text
-    enabled: false
 
   # --------------------------------------------- gdpr-bundle (off by default)
   # Thousands of reviews, almost all about cookie banners. Noise.

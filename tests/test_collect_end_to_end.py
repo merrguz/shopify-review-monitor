@@ -239,3 +239,60 @@ def test_whole_watchlist_of_reviewless_apps_stays_quiet(monkeypatch):
     ]
     noisy = [h for h in healths if not h.ok or h.notes]
     assert noisy == [], f"{len(noisy)} of 31 review-less apps reported problems"
+
+
+def test_running_off_the_end_of_pagination_is_silent(monkeypatch):
+    """With pages>1, an app whose negatives all fit on page 1 will fetch an empty
+    page 2. That's normal exhaustion, not a problem, and must not warn."""
+    def fake_get(url, *, params=None, **kw):
+        page = dict(params or {}).get("page")
+        if page == "2":
+            return (
+                '<html><head><link rel="canonical" '
+                'href="https://apps.shopify.com/userway-accessibility/reviews">'
+                '</head><body><h2>Reviews (9)</h2>' + ("x" * 2500) + '</body></html>'
+            )
+        path = FIXTURES / "userway-accessibility.attrs.html"
+        if not path.exists():
+            pytest.skip("run tests/fixtures/build_fixtures.py first")
+        return path.read_text()
+
+    monkeypatch.setattr(shopify_mod.http, "get", fake_get)
+    reviews, health = ShopifySource().collect(UW, {"max_rating": 3, "pages": 2})
+    assert len(reviews) == 3
+    assert health.ok
+    assert health.notes == [], f"expected silence, got {health.notes}"
+
+
+def test_empty_first_page_still_warns(monkeypatch):
+    """The genuine breakage: buckets promise reviews but page 1 has none."""
+    def fake_get(url, *, params=None, **kw):
+        if params:
+            return (
+                '<html><head><link rel="canonical" '
+                'href="https://apps.shopify.com/userway-accessibility/reviews">'
+                '</head><body><h2>Reviews (9)</h2>' + ("x" * 2500) + '</body></html>'
+            )
+        path = FIXTURES / "userway-accessibility.attrs.html"
+        if not path.exists():
+            pytest.skip("run tests/fixtures/build_fixtures.py first")
+        return path.read_text()
+
+    monkeypatch.setattr(shopify_mod.http, "get", fake_get)
+    reviews, health = ShopifySource().collect(UW, DEFAULTS)
+    assert reviews == []
+    assert any("found 0 review blocks" in n for n in health.notes)
+
+
+def test_alt_text_bucket_is_enabled_and_gdpr_is_not():
+    """Config assertion: the alt-text trial is on, GDPR noise stays off."""
+    from monitor.config import Config
+
+    cfg = Config.load(Path(__file__).parent.parent / "competitors.yaml")
+    buckets = {a["bucket"] for a in cfg.apps}
+    assert "alt-text" in buckets
+    assert "gdpr-bundle" not in buckets
+    assert len(cfg.apps) == 60
+    alt = [a for a in cfg.apps if a["bucket"] == "alt-text"]
+    assert len(alt) == 7
+    assert "alttext-ai" in {a["handle"] for a in alt}

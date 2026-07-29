@@ -472,12 +472,17 @@ class ShopifySource:
                 soup = BeautifulSoup(page_html, "html.parser")
                 blocks, strategy = find_review_blocks(soup)
                 if not blocks:
-                    health.warn(
-                        f"rating {rating} page {page}: found 0 review blocks "
-                        f"(strategy={strategy}) but buckets promised "
-                        f"{summary['buckets'].get(rating)}"
-                    )
-                    continue
+                    # Empty page 1 with reviews promised = something is wrong.
+                    # Empty page 2+ just means we ran off the end of the results,
+                    # which is the normal case whenever the negatives fit on one
+                    # page -- warning about it would be pure noise.
+                    if page == 1:
+                        health.warn(
+                            f"rating {rating}: found 0 review blocks "
+                            f"(strategy={strategy}) but buckets promised "
+                            f"{summary['buckets'].get(rating)}"
+                        )
+                    break
 
                 page_count = 0
                 for blk in blocks:
