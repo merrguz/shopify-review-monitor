@@ -1,0 +1,123 @@
+name: review-monitor
+
+on:
+  schedule:
+    # Every 2 hours at :07.
+    #
+    # Cadence is a minutes-budget decision, not a technical one. GitHub gives
+    # private repos 2,000 free Actions minutes/month and rounds EVERY JOB UP to a
+    # whole minute, so at ~3 min per run:
+    #
+    #   daily      "7 3 * * *"     30 runs   ~90 min    5% of the free tier
+    #   every 6h   "7 */6 * * *"  120 runs  ~360 min   18%
+    #   every 3h   "7 */3 * * *"  240 runs  ~720 min   36%
+    #   every 2h   "7 */2 * * *"  360 runs ~1080 min   54%   <-- current
+    #   hourly     "7 * * * *"    720 runs ~2160 min  108%   over budget on Free
+    #
+    # Change the one line below to re-tune. Avoid :00 -- that's when everyone
+    # else's crons fire and GitHub's scheduler is most backed up. Expect 5-20 min
+    # of drift regardless; scheduled runs are best-effort, not punctual.
+    - cron: "7 */2 * * *"
+
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "run | doctor | backfill"
+        required: true
+        default: run
+        type: choice
+        options: [run, doctor, backfill]
+      dry_run:
+        description: "Log instead of sending to Clay/Slack"
+        required: false
+        default: false
+        type: boolean
+
+# Runs mutate state/seen.json and push it. Overlapping runs would race on that
+# commit, so never let two run at once.
+concurrency:
+  group: review-monitor
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  monitor:
+    # SAFETY INTERLOCK. Scheduled runs do nothing until the repo variable
+    # MONITOR_ENABLED is set to "true" (Settings -> Secrets and variables ->
+    # Actions -> Variables). Manual runs always work.
+    #
+    # This exists so you can push the repo, verify the parser with `doctor`, and
+    # `backfill` the ~27 existing negative reviews BEFORE the cron starts firing
+    # and dumps all of them into Slack at once. Flip the variable when you're
+    # ready to arm it. See SETUP.md.
+    if: github.event_name != 'schedule' || vars.MONITOR_ENABLED == 'true'
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run monitor
+        env:
+          CLAY_WEBHOOK_URL: ${{ secrets.CLAY_WEBHOOK_URL }}
+          CLAY_WEBHOOK_AUTH: ${{ secrets.CLAY_WEBHOOK_AUTH }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          CMD="${{ inputs.command || 'run' }}"
+          EXTRA=""
+          if [ "${{ inputs.dry_run }}" = "true" ] && [ "$CMD" = "run" ]; then
+            EXTRA="--dry-run"
+          fi
+          echo "::notice::running: python -m monitor $CMD $EXTRA"
+          python -m monitor "$CMD" $EXTRA
+
+      - name: Commit state
+        # Runs even if the monitor step failed: we still want to keep whatever
+        # progress and health notes were recorded before it died.
+        if: always()
+        run: |
+          git config user.name  "review-monitor"
+          git config user.email "actions@github.com"
+          if git diff --quiet -- state/; then
+            echo "no state change"
+            exit 0
+          fi
+          git add state/
+          git commit -m "state: $(date -u +'%Y-%m-%dT%H:%MZ')"
+          # Another run may have pushed while we worked. Rebase and retry rather
+          # than failing the whole job on a trivial conflict.
+          for i in 1 2 3; do
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && \
+              git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            echo "push attempt $i failed, retrying"
+            sleep 5
+          done
+          exit 1
+
+      - name: Summary
+        if: always()
+        env:
+          CMD: ${{ inputs.command || 'run' }}
+          ARMED: ${{ vars.MONITOR_ENABLED || 'not set' }}
+        run: |
+          TRACKED=$(python -c "import json;print(len(json.load(open('state/seen.json'))['seen']))" 2>/dev/null || echo "?")
+          {
+            echo "### review-monitor"
+            echo ""
+            echo "| | |"
+            echo "|---|---|"
+            echo "| command | \`$CMD\` |"
+            echo "| trigger | \`${{ github.event_name }}\` |"
+            echo "| schedule armed | \`$ARMED\` |"
+            echo "| review ids tracked | $TRACKED |"
+          } >> "$GITHUB_STEP_SUMMARY"

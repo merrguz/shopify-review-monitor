@@ -1,0 +1,233 @@
+# Competitor watchlist.
+#
+# `bucket` drives Slack routing and the fit_score prior in Clay:
+#   overlay      - overlay/widget vendor. Core competitor. A merchant complaining
+#                  here is the single best lead TestParty can get.
+#   code-fix     - source-code remediation. Direct positional competitor.
+#   scanner      - audit/scan/monitoring only. Adjacent.
+#   alt-text     - image alt-text SEO tools. Weak signal, high volume. Off by default.
+#   gdpr-bundle  - cookie/GDPR apps that bundle an a11y widget. Weak signal.
+#
+# `enabled: false` means "resolve and validate the handle, but don't alert on it."
+# Handles verified against apps.shopify.com on 2026-07-29.
+
+defaults:
+  max_rating: 3        # flag reviews at or below this
+  pages: 1             # review pages to walk per rating level
+                       # 1 is plenty: no monitored app has more than 4 negative
+                       # reviews. Raise it if you enable the gdpr-bundle apps.
+
+apps:
+  # ---------------------------------------------------------------- overlay
+  - handle: accesswidget
+    name: accessiBe Web Accessibility
+    bucket: overlay
+    priority: high
+  - handle: userway-accessibility
+    name: UserWay Website Accessibility
+    bucket: overlay
+    priority: high
+  - handle: accessibly-app
+    name: Accessibly (On The Map)
+    bucket: overlay
+    priority: high
+  - handle: sea-accessibility-ada-wcag
+    name: Avada Accessibility Widget ADA
+    bucket: overlay
+    priority: high
+  - handle: access-pro
+    name: ADA Accessibility Widget by AP
+    bucket: overlay
+    priority: high
+  - handle: accessibility-enabler-increase-sales-with-disability-friendly-site
+    name: Accessibility Enabler AW
+    bucket: overlay
+  - handle: isonomy-web-accessibility
+    name: Ai Web Accessibility ADA WCAG (Isonomy)
+    bucket: overlay
+  - handle: accessibility-assistant
+    name: "Accessibility Assistant : ADA"
+    bucket: overlay
+  - handle: accessify-web-accessibility
+    name: Ai Accessibility - ADA & WCAG
+    bucket: overlay
+  - handle: accessease
+    name: Ez Accessibility Widget - ADA
+    bucket: overlay
+  - handle: ea-accessibility
+    name: EA. Accessibility ADA WCAG EAA
+    bucket: overlay
+  - handle: accessibilityspark
+    name: Accessibility Spark ADA & WCAG
+    bucket: overlay
+  - handle: accessibility-by-appifycommerce
+    name: AC - Accessibility Toolkit
+    bucket: overlay
+  - handle: all-in-one-accessibility
+    name: All in One Accessibility
+    bucket: overlay
+  - handle: accessora
+    name: "Accessora: Accessibility ADA"
+    bucket: overlay
+  - handle: accessibilityway
+    name: Accessibility Way ADA WCAG EAA
+    bucket: overlay
+  - handle: codeinspire-accessibility-tool
+    name: CodeInspire Accessibility Tool
+    bucket: overlay
+  - handle: web-accessibility-by-wawsome
+    name: Web Accessibility by Wawsome
+    bucket: overlay
+  - handle: accsible
+    name: Accsible
+    bucket: overlay
+  - handle: clevyre-accessibility-widget
+    name: Clvyr Accessibility Widget ADA   # note: slug spells out the "e"s
+    bucket: overlay
+  - handle: accessibility-widget
+    name: Amrita Accessibility Widget      # note: generic-looking slug, easy to mis-guess
+    bucket: overlay
+  - handle: easy-accessibility-ada-aid
+    name: Accessibility & ADA EAA WCAG     # not the same app as isonomy, despite near-identical tagline
+    bucket: overlay
+  - handle: iris-by-birdeye
+    name: Iris by Birdeye
+    bucket: overlay
+  - handle: usablenet-assistive
+    name: UsableNet Assistive
+    bucket: overlay
+
+  # ---------------------------------------------------------------- code-fix
+  - handle: patrol
+    name: Patrol - ADA Code Level Fixes
+    bucket: code-fix
+    priority: high
+  - handle: enableall
+    name: ADA Accessibility Code-Fix (EnableAll)
+    bucket: code-fix
+    priority: high
+  - handle: accessifyai
+    name: "AccessifyAI: WCAG Scanner"
+    bucket: code-fix
+  - handle: accessguard-ada-wcag
+    name: AccessGuard ADA WCAG
+    bucket: code-fix
+  - handle: accessfix
+    name: AccessFix
+    bucket: code-fix
+  - handle: accessibility-ai-audit-fix
+    name: AccessFix - ADA/EAA/WCAG   # distinct listing from accessfix, near-identical name
+    bucket: code-fix
+  - handle: abledly-accessibility-ada
+    name: Abledly Accessibility ADA
+    bucket: code-fix
+  - handle: clearpath-accessibility
+    name: ClearPath Accessibility
+    bucket: code-fix
+  - handle: accessifix-ai
+    name: AccessiFix AI
+    bucket: code-fix
+  - handle: inclusify
+    name: Inclusify
+    bucket: code-fix
+  - handle: accesscomply
+    name: AccessComply
+    bucket: code-fix
+  - handle: a11ypro
+    name: A11yPro
+    bucket: code-fix
+  - handle: wcag-tool
+    name: WebComply ADA & WCAG
+    bucket: code-fix
+
+  # ---------------------------------------------------------------- scanner
+  - handle: accessify-ada-audit
+    name: Accessibility Audit - ADA WCAG
+    bucket: scanner
+  - handle: adachecked
+    name: "AdaChecked: ADA & WCAG Audit"
+    bucket: scanner
+  - handle: kokua
+    name: "Kokua - Accessibility Scanner"
+    bucket: scanner
+  - handle: scanify-accessibility-scan
+    name: Scanify - Accessibility Scan
+    bucket: scanner
+  - handle: honest-a11y
+    name: Honest A11y - Accessibility
+    bucket: scanner
+  - handle: accessproof-1
+    name: AccessProof
+    bucket: scanner
+  - handle: accessproof-2
+    name: AccessProof ADA Accessibility   # distinct listing from accessproof-1
+    bucket: scanner
+  - handle: accessradar
+    name: AccessRadar
+    bucket: scanner
+  - handle: accessbinder
+    name: AccessBinder
+    bucket: scanner
+  - handle: hewnscan
+    name: HewnScan
+    bucket: scanner
+  - handle: access-readiness-doctor
+    name: Access Readiness Doctor
+    bucket: scanner
+  - handle: threshold
+    name: Threshold
+    bucket: scanner
+  - handle: paperfort
+    name: Paperfort
+    bucket: scanner
+  - handle: tawnywatch
+    name: TawnyWatch
+    bucket: scanner
+  - handle: navible-bfsg-scanner
+    name: Navible BFSG Scanner
+    bucket: scanner
+  - handle: shoplab-accessibility-check
+    name: shoplab - Accessibility Check
+    bucket: scanner
+
+  # ------------------------------------------------- alt-text (off by default)
+  # High review volume, weak buying signal. Turn on if you want the extra surface.
+  - handle: alt-text-automator-by-starapps
+    name: "AltKing: AI Alt Text SEO & ADA"
+    bucket: alt-text
+    enabled: false
+  - handle: alttext-ai
+    name: ATAI - AltText.ai
+    bucket: alt-text
+    enabled: false
+  - handle: altseo-ai-alt-text-generator
+    name: "ALT SEO: AI Alt Text Generator"
+    bucket: alt-text
+    enabled: false
+  - handle: ai-alt-text-entangle
+    name: Rocket AI Alt Text Generator
+    bucket: alt-text
+    enabled: false
+  - handle: smartalt-ai-alt-text
+    name: SmartAlt - AI SEO Alt Text
+    bucket: alt-text
+    enabled: false
+  - handle: semantic
+    name: "Semantic: AI Image Alt Text SEO"
+    bucket: alt-text
+    enabled: false
+  - handle: altguard-1
+    name: AltGuard
+    bucket: alt-text
+    enabled: false
+
+  # --------------------------------------------- gdpr-bundle (off by default)
+  # Thousands of reviews, almost all about cookie banners. Noise.
+  - handle: gdpr-backpack
+    name: Consentmo GDPR Compliance
+    bucket: gdpr-bundle
+    enabled: false
+  - handle: gdpr-cookie-consent
+    name: Pandectes GDPR Compliance
+    bucket: gdpr-bundle
+    enabled: false

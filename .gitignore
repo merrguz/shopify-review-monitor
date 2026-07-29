@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+.env
+# Fixtures are generated; regenerate with tests/fixtures/build_fixtures.py
+tests/fixtures/*.html
