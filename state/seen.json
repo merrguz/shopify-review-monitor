@@ -1,1 +1,464 @@
-{"seen": [], "meta": {}}
+{
+ "meta": {
+  "shopify": {
+   "a11ypro": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "abledly-accessibility-ada": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "access-pro": {
+    "negative_expected": 2,
+    "negative_parsed": 2,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 86
+   },
+   "access-readiness-doctor": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "accessbinder": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "accesscomply": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "accessease": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 59
+   },
+   "accessfix": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "accessguard-ada-wcag": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "accessibility-ai-audit-fix": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "accessibility-assistant": {
+    "negative_expected": 3,
+    "negative_parsed": 3,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 38
+   },
+   "accessibility-by-appifycommerce": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 17
+   },
+   "accessibility-enabler-increase-sales-with-disability-friendly-site": {
+    "negative_expected": 4,
+    "negative_parsed": 4,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 69
+   },
+   "accessibility-widget": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "accessibilityspark": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 21
+   },
+   "accessibilityway": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 5
+   },
+   "accessibly-app": {
+    "negative_expected": 3,
+    "negative_parsed": 3,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 25
+   },
+   "accessifix-ai": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "accessify-ada-audit": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 2
+   },
+   "accessify-web-accessibility": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 31
+   },
+   "accessifyai": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "accessora": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 5
+   },
+   "accessproof-1": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "accessproof-2": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "accessradar": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "accesswidget": {
+    "negative_expected": 3,
+    "negative_parsed": 3,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 15
+   },
+   "accsible": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "adachecked": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "all-in-one-accessibility": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 6
+   },
+   "clearpath-accessibility": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "clevyre-accessibility-widget": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "codeinspire-accessibility-tool": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 13
+   },
+   "ea-accessibility": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 21
+   },
+   "easy-accessibility-ada-aid": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "enableall": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 8
+   },
+   "hewnscan": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "honest-a11y": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "inclusify": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "iris-by-birdeye": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "isonomy-web-accessibility": {
+    "negative_expected": 3,
+    "negative_parsed": 3,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 29
+   },
+   "kokua": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "navible-bfsg-scanner": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "paperfort": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "patrol": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 20
+   },
+   "scanify-accessibility-scan": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "sea-accessibility-ada-wcag": {
+    "negative_expected": 3,
+    "negative_parsed": 3,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 283
+   },
+   "shoplab-accessibility-check": {
+    "negative_expected": 1,
+    "negative_parsed": 1,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 1
+   },
+   "tawnywatch": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "threshold": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "usablenet-assistive": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [
+     "could not parse a total review count from the page -- this almost certainly means Shopify changed the markup"
+    ],
+    "ok": false,
+    "total_reviews_seen": 0
+   },
+   "userway-accessibility": {
+    "negative_expected": 3,
+    "negative_parsed": 3,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 9
+   },
+   "wcag-tool": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 1
+   },
+   "web-accessibility-by-wawsome": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 7
+   }
+  }
+ },
+ "seen": [
+  "shopify:access-pro:1514236",
+  "shopify:access-pro:2021431",
+  "shopify:accessibility-assistant:1964033",
+  "shopify:accessibility-assistant:735992",
+  "shopify:accessibility-assistant:927783",
+  "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:1472198",
+  "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:341646",
+  "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:382284",
+  "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:549914",
+  "shopify:accessibly-app:1724762",
+  "shopify:accessibly-app:820345",
+  "shopify:accessibly-app:842831",
+  "shopify:accesswidget:1441415",
+  "shopify:accesswidget:1729096",
+  "shopify:accesswidget:2286800",
+  "shopify:isonomy-web-accessibility:1741591",
+  "shopify:isonomy-web-accessibility:2120423",
+  "shopify:isonomy-web-accessibility:2216113",
+  "shopify:sea-accessibility-ada-wcag:1719728",
+  "shopify:sea-accessibility-ada-wcag:1796401",
+  "shopify:sea-accessibility-ada-wcag:1827421",
+  "shopify:shoplab-accessibility-check:2047848",
+  "shopify:userway-accessibility:1588515",
+  "shopify:userway-accessibility:1735740",
+  "shopify:userway-accessibility:1818136"
+ ]
+}
