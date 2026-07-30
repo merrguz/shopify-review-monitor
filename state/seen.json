@@ -197,12 +197,47 @@
     "ok": true,
     "total_reviews_seen": 0
    },
+   "ai-alt-text-entangle": {
+    "negative_expected": 1,
+    "negative_parsed": 1,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 11
+   },
    "all-in-one-accessibility": {
     "negative_expected": 0,
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
     "total_reviews_seen": 6
+   },
+   "alt-text-automator-by-starapps": {
+    "negative_expected": 1,
+    "negative_parsed": 1,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 116
+   },
+   "altguard-1": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 0
+   },
+   "altseo-ai-alt-text-generator": {
+    "negative_expected": 4,
+    "negative_parsed": 4,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 20
+   },
+   "alttext-ai": {
+    "negative_expected": 14,
+    "negative_parsed": 14,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 135
    },
    "clearpath-accessibility": {
     "negative_expected": 0,
@@ -323,12 +358,26 @@
     "ok": true,
     "total_reviews_seen": 283
    },
+   "semantic": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 0
+   },
    "shoplab-accessibility-check": {
     "negative_expected": 1,
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
     "total_reviews_seen": 1
+   },
+   "smartalt-ai-alt-text": {
+    "negative_expected": 0,
+    "negative_parsed": 0,
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 5
    },
    "tawnywatch": {
     "negative_expected": 0,
@@ -390,6 +439,26 @@
   "shopify:accesswidget:1441415",
   "shopify:accesswidget:1729096",
   "shopify:accesswidget:2286800",
+  "shopify:ai-alt-text-entangle:1205440",
+  "shopify:alt-text-automator-by-starapps:1873619",
+  "shopify:altseo-ai-alt-text-generator:1831352",
+  "shopify:altseo-ai-alt-text-generator:1966621",
+  "shopify:altseo-ai-alt-text-generator:2085340",
+  "shopify:altseo-ai-alt-text-generator:2177075",
+  "shopify:alttext-ai:1139987",
+  "shopify:alttext-ai:1338795",
+  "shopify:alttext-ai:1538690",
+  "shopify:alttext-ai:1551357",
+  "shopify:alttext-ai:1588350",
+  "shopify:alttext-ai:1594771",
+  "shopify:alttext-ai:1602356",
+  "shopify:alttext-ai:1713136",
+  "shopify:alttext-ai:1829086",
+  "shopify:alttext-ai:1902669",
+  "shopify:alttext-ai:1935491",
+  "shopify:alttext-ai:1986903",
+  "shopify:alttext-ai:2132450",
+  "shopify:alttext-ai:2182328",
   "shopify:isonomy-web-accessibility:1741591",
   "shopify:isonomy-web-accessibility:2120423",
   "shopify:isonomy-web-accessibility:2216113",
