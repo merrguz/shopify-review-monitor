@@ -104,14 +104,14 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 21
+    "total_reviews_seen": 22
    },
    "accessibilityway": {
     "negative_expected": 0,
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 5
+    "total_reviews_seen": 6
    },
    "accessibly-app": {
     "negative_expected": 3,
@@ -216,7 +216,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 116
+    "total_reviews_seen": 117
    },
    "altguard-1": {
     "negative_expected": 0,
@@ -356,7 +356,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 283
+    "total_reviews_seen": 284
    },
    "semantic": {
     "negative_expected": 0,
@@ -373,11 +373,11 @@
     "total_reviews_seen": 1
    },
    "smartalt-ai-alt-text": {
-    "negative_expected": 0,
-    "negative_parsed": 0,
+    "negative_expected": 1,
+    "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 5
+    "total_reviews_seen": 6
    },
    "tawnywatch": {
     "negative_expected": 0,
@@ -466,6 +466,7 @@
   "shopify:sea-accessibility-ada-wcag:1796401",
   "shopify:sea-accessibility-ada-wcag:1827421",
   "shopify:shoplab-accessibility-check:2047848",
+  "shopify:smartalt-ai-alt-text:2303708",
   "shopify:userway-accessibility:1588515",
   "shopify:userway-accessibility:1735740",
   "shopify:userway-accessibility:1818136"
