@@ -86,11 +86,11 @@
     "total_reviews_seen": 17
    },
    "accessibility-enabler-increase-sales-with-disability-friendly-site": {
-    "negative_expected": 4,
-    "negative_parsed": 4,
+    "negative_expected": 5,
+    "negative_parsed": 5,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 69
+    "total_reviews_seen": 70
    },
    "accessibility-widget": {
     "negative_expected": 0,
@@ -430,6 +430,7 @@
   "shopify:accessibility-assistant:735992",
   "shopify:accessibility-assistant:927783",
   "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:1472198",
+  "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:2315025",
   "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:341646",
   "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:382284",
   "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:549914",
