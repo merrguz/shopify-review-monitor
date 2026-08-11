@@ -342,7 +342,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 24
+    "total_reviews_seen": 25
    },
    "scanify-accessibility-scan": {
     "negative_expected": 0,
@@ -356,7 +356,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 289
+    "total_reviews_seen": 290
    },
    "semantic": {
     "negative_expected": 0,
