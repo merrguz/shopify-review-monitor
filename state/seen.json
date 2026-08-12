@@ -139,7 +139,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 33
+    "total_reviews_seen": 32
    },
    "accessifyai": {
     "negative_expected": 0,
@@ -342,7 +342,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 25
+    "total_reviews_seen": 26
    },
    "scanify-accessibility-scan": {
     "negative_expected": 0,
