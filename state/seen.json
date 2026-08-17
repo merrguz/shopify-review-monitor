@@ -132,7 +132,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 3
+    "total_reviews_seen": 2
    },
    "accessify-web-accessibility": {
     "negative_expected": 0,
@@ -216,7 +216,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 139
+    "total_reviews_seen": 138
    },
    "altguard-1": {
     "negative_expected": 0,
