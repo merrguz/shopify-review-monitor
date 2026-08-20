@@ -216,7 +216,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 143
+    "total_reviews_seen": 144
    },
    "altguard-1": {
     "negative_expected": 0,
@@ -405,7 +405,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 9
+    "total_reviews_seen": 10
    },
    "wcag-tool": {
     "negative_expected": 0,
