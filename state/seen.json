@@ -181,7 +181,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 15
+    "total_reviews_seen": 16
    },
    "accsible": {
     "negative_expected": 0,
@@ -216,7 +216,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 146
+    "total_reviews_seen": 145
    },
    "altguard-1": {
     "negative_expected": 0,
@@ -342,7 +342,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 26
+    "total_reviews_seen": 25
    },
    "scanify-accessibility-scan": {
     "negative_expected": 0,
@@ -419,7 +419,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 9
+    "total_reviews_seen": 8
    }
   }
  },
