@@ -212,11 +212,11 @@
     "total_reviews_seen": 6
    },
    "alt-text-automator-by-starapps": {
-    "negative_expected": 2,
-    "negative_parsed": 2,
+    "negative_expected": 1,
+    "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 159
+    "total_reviews_seen": 160
    },
    "altguard-1": {
     "negative_expected": 0,
