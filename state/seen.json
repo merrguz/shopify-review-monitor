@@ -72,11 +72,11 @@
     "total_reviews_seen": 0
    },
    "accessibility-assistant": {
-    "negative_expected": 3,
-    "negative_parsed": 3,
+    "negative_expected": 4,
+    "negative_parsed": 4,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 38
+    "total_reviews_seen": 39
    },
    "accessibility-by-appifycommerce": {
     "negative_expected": 0,
@@ -216,7 +216,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 165
+    "total_reviews_seen": 166
    },
    "altguard-1": {
     "negative_expected": 0,
@@ -427,6 +427,7 @@
   "shopify:access-pro:1514236",
   "shopify:access-pro:2021431",
   "shopify:accessibility-assistant:1964033",
+  "shopify:accessibility-assistant:2340149",
   "shopify:accessibility-assistant:735992",
   "shopify:accessibility-assistant:927783",
   "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:1472198",
