@@ -20,7 +20,7 @@
     "negative_parsed": 2,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 88
+    "total_reviews_seen": 89
    },
    "access-readiness-doctor": {
     "negative_expected": 0,
@@ -146,7 +146,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 0
+    "total_reviews_seen": 1
    },
    "accessora": {
     "negative_expected": 0,
@@ -216,7 +216,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 167
+    "total_reviews_seen": 168
    },
    "altguard-1": {
     "negative_expected": 0,
