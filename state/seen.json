@@ -72,11 +72,11 @@
     "total_reviews_seen": 0
    },
    "accessibility-assistant": {
-    "negative_expected": 4,
-    "negative_parsed": 4,
+    "negative_expected": 3,
+    "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 39
+    "total_reviews_seen": 38
    },
    "accessibility-by-appifycommerce": {
     "negative_expected": 0,
@@ -104,14 +104,14 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 28
+    "total_reviews_seen": 29
    },
    "accessibilityway": {
     "negative_expected": 0,
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 18
+    "total_reviews_seen": 19
    },
    "accessibly-app": {
     "negative_expected": 3,
