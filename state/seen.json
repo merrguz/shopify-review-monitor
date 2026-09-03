@@ -20,7 +20,7 @@
     "negative_parsed": 2,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 90
+    "total_reviews_seen": 94
    },
    "access-readiness-doctor": {
     "negative_expected": 0,
@@ -48,7 +48,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 63
+    "total_reviews_seen": 71
    },
    "accessfix": {
     "negative_expected": 0,
@@ -76,21 +76,21 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 38
+    "total_reviews_seen": 41
    },
    "accessibility-by-appifycommerce": {
     "negative_expected": 0,
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 18
+    "total_reviews_seen": 20
    },
    "accessibility-enabler-increase-sales-with-disability-friendly-site": {
-    "negative_expected": 5,
-    "negative_parsed": 5,
+    "negative_expected": 8,
+    "negative_parsed": 8,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 70
+    "total_reviews_seen": 73
    },
    "accessibility-widget": {
     "negative_expected": 0,
@@ -104,21 +104,21 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 30
+    "total_reviews_seen": 37
    },
    "accessibilityway": {
     "negative_expected": 0,
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 20
+    "total_reviews_seen": 32
    },
    "accessibly-app": {
     "negative_expected": 3,
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 26
+    "total_reviews_seen": 29
    },
    "accessifix-ai": {
     "negative_expected": 0,
@@ -132,14 +132,14 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 2
+    "total_reviews_seen": 4
    },
    "accessify-web-accessibility": {
     "negative_expected": 0,
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 37
+    "total_reviews_seen": 39
    },
    "accessifyai": {
     "negative_expected": 0,
@@ -177,11 +177,11 @@
     "total_reviews_seen": 0
    },
    "accesswidget": {
-    "negative_expected": 3,
-    "negative_parsed": 3,
+    "negative_expected": 2,
+    "negative_parsed": 2,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 16
+    "total_reviews_seen": 15
    },
    "accsible": {
     "negative_expected": 0,
@@ -195,14 +195,14 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 0
+    "total_reviews_seen": 1
    },
    "ai-alt-text-entangle": {
     "negative_expected": 1,
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 11
+    "total_reviews_seen": 12
    },
    "all-in-one-accessibility": {
     "negative_expected": 0,
@@ -216,7 +216,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 169
+    "total_reviews_seen": 185
    },
    "altguard-1": {
     "negative_expected": 0,
@@ -226,18 +226,18 @@
     "total_reviews_seen": 0
    },
    "altseo-ai-alt-text-generator": {
-    "negative_expected": 4,
-    "negative_parsed": 4,
+    "negative_expected": 3,
+    "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 32
+    "total_reviews_seen": 53
    },
    "alttext-ai": {
-    "negative_expected": 14,
-    "negative_parsed": 14,
+    "negative_expected": 15,
+    "negative_parsed": 15,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 136
+    "total_reviews_seen": 142
    },
    "clearpath-accessibility": {
     "negative_expected": 0,
@@ -254,18 +254,18 @@
     "total_reviews_seen": 0
    },
    "codeinspire-accessibility-tool": {
-    "negative_expected": 0,
-    "negative_parsed": 0,
+    "negative_expected": 1,
+    "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 13
+    "total_reviews_seen": 15
    },
    "ea-accessibility": {
     "negative_expected": 0,
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 23
+    "total_reviews_seen": 26
    },
    "easy-accessibility-ada-aid": {
     "negative_expected": 0,
@@ -314,7 +314,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 29
+    "total_reviews_seen": 42
    },
    "kokua": {
     "negative_expected": 0,
@@ -342,7 +342,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 26
+    "total_reviews_seen": 27
    },
    "scanify-accessibility-scan": {
     "negative_expected": 0,
@@ -356,7 +356,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 294
+    "total_reviews_seen": 312
    },
    "semantic": {
     "negative_expected": 0,
@@ -377,7 +377,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 6
+    "total_reviews_seen": 7
    },
    "tawnywatch": {
     "negative_expected": 0,
@@ -419,7 +419,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 9
+    "total_reviews_seen": 7
    }
   }
  },
@@ -430,11 +430,14 @@
   "shopify:accessibility-assistant:2340149",
   "shopify:accessibility-assistant:735992",
   "shopify:accessibility-assistant:927783",
+  "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:1418458",
   "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:1472198",
+  "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:1622158",
   "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:2315025",
   "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:341646",
   "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:382284",
   "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:549914",
+  "shopify:accessibility-enabler-increase-sales-with-disability-friendly-site:610332",
   "shopify:accessibly-app:1724762",
   "shopify:accessibly-app:820345",
   "shopify:accessibly-app:842831",
@@ -456,12 +459,15 @@
   "shopify:alttext-ai:1594771",
   "shopify:alttext-ai:1602356",
   "shopify:alttext-ai:1713136",
+  "shopify:alttext-ai:1775158",
   "shopify:alttext-ai:1829086",
   "shopify:alttext-ai:1902669",
   "shopify:alttext-ai:1935491",
+  "shopify:alttext-ai:1951757",
   "shopify:alttext-ai:1986903",
   "shopify:alttext-ai:2132450",
   "shopify:alttext-ai:2182328",
+  "shopify:codeinspire-accessibility-tool:1360090",
   "shopify:isonomy-web-accessibility:1741591",
   "shopify:isonomy-web-accessibility:2120423",
   "shopify:isonomy-web-accessibility:2216113",
