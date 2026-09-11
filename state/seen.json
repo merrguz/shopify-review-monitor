@@ -230,7 +230,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 54
+    "total_reviews_seen": 55
    },
    "alttext-ai": {
     "negative_expected": 15,
@@ -344,7 +344,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 27
+    "total_reviews_seen": 28
    },
    "scanify-accessibility-scan": {
     "negative_expected": 0,
