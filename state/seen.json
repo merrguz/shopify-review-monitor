@@ -20,7 +20,7 @@
     "negative_parsed": 2,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 98
+    "total_reviews_seen": 97
    },
    "access-readiness-doctor": {
     "negative_expected": 0,
@@ -48,7 +48,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 69
+    "total_reviews_seen": 68
    },
    "accessfix": {
     "negative_expected": 0,
@@ -118,7 +118,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 29
+    "total_reviews_seen": 28
    },
    "accessifix-ai": {
     "negative_expected": 0,
@@ -216,7 +216,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 200
+    "total_reviews_seen": 201
    },
    "altguard-1": {
     "negative_expected": 0,
