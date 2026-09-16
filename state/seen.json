@@ -111,7 +111,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 31
+    "total_reviews_seen": 32
    },
    "accessibly-app": {
     "negative_expected": 3,
@@ -177,11 +177,11 @@
     "total_reviews_seen": 0
    },
    "accesswidget": {
-    "negative_expected": 2,
-    "negative_parsed": 2,
+    "negative_expected": 3,
+    "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 15
+    "total_reviews_seen": 16
    },
    "accsible": {
     "negative_expected": 0,
@@ -267,7 +267,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 27
+    "total_reviews_seen": 26
    },
    "easy-accessibility-ada-aid": {
     "negative_expected": 0,
@@ -446,6 +446,7 @@
   "shopify:accesswidget:1441415",
   "shopify:accesswidget:1729096",
   "shopify:accesswidget:2286800",
+  "shopify:accesswidget:2361668",
   "shopify:ai-alt-text-entangle:1205440",
   "shopify:alt-text-automator-by-starapps:1873619",
   "shopify:alt-text-automator-by-starapps:2333131",
