@@ -20,7 +20,7 @@
     "negative_parsed": 2,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 97
+    "total_reviews_seen": 96
    },
    "access-readiness-doctor": {
     "negative_expected": 0,
@@ -104,14 +104,14 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 41
+    "total_reviews_seen": 42
    },
    "accessibilityway": {
     "negative_expected": 0,
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 32
+    "total_reviews_seen": 33
    },
    "accessibly-app": {
     "negative_expected": 3,
@@ -146,7 +146,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 2
+    "total_reviews_seen": 3
    },
    "accessora": {
     "negative_expected": 0,
@@ -216,7 +216,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 206
+    "total_reviews_seen": 205
    },
    "altguard-1": {
     "negative_expected": 0,
@@ -230,7 +230,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 55
+    "total_reviews_seen": 56
    },
    "alttext-ai": {
     "negative_expected": 15,
