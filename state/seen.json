@@ -90,7 +90,7 @@
     "negative_parsed": 8,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 74
+    "total_reviews_seen": 73
    },
    "accessibility-widget": {
     "negative_expected": 0,
@@ -104,14 +104,14 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 42
+    "total_reviews_seen": 43
    },
    "accessibilityway": {
     "negative_expected": 0,
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 33
+    "total_reviews_seen": 34
    },
    "accessibly-app": {
     "negative_expected": 3,
@@ -216,7 +216,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 205
+    "total_reviews_seen": 206
    },
    "altguard-1": {
     "negative_expected": 0,
