@@ -104,7 +104,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 45
+    "total_reviews_seen": 46
    },
    "accessibilityway": {
     "negative_expected": 0,
@@ -216,7 +216,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 209
+    "total_reviews_seen": 210
    },
    "altguard-1": {
     "negative_expected": 0,
@@ -230,7 +230,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 56
+    "total_reviews_seen": 59
    },
    "alttext-ai": {
     "negative_expected": 15,
@@ -335,8 +335,10 @@
    "paperfort": {
     "negative_expected": 0,
     "negative_parsed": 0,
-    "notes": [],
-    "ok": true,
+    "notes": [
+     "could not fetch reviews page: 404 not found: https://apps.shopify.com/paperfort/reviews"
+    ],
+    "ok": false,
     "total_reviews_seen": 0
    },
    "patrol": {
