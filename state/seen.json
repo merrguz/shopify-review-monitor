@@ -195,7 +195,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 2
+    "total_reviews_seen": 3
    },
    "ai-alt-text-entangle": {
     "negative_expected": 1,
@@ -360,7 +360,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 318
+    "total_reviews_seen": 319
    },
    "semantic": {
     "negative_expected": 0,
