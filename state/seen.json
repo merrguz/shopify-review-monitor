@@ -230,7 +230,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 60
+    "total_reviews_seen": 61
    },
    "alttext-ai": {
     "negative_expected": 15,
@@ -360,7 +360,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 320
+    "total_reviews_seen": 321
    },
    "semantic": {
     "negative_expected": 0,
