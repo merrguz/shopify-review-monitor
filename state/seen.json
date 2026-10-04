@@ -146,7 +146,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 3
+    "total_reviews_seen": 2
    },
    "accessora": {
     "negative_expected": 0,
@@ -216,7 +216,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 221
+    "total_reviews_seen": 222
    },
    "altguard-1": {
     "negative_expected": 0,
@@ -230,7 +230,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 60
+    "total_reviews_seen": 61
    },
    "alttext-ai": {
     "negative_expected": 15,
