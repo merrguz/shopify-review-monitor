@@ -104,7 +104,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 52
+    "total_reviews_seen": 53
    },
    "accessibilityway": {
     "negative_expected": 0,
@@ -226,11 +226,11 @@
     "total_reviews_seen": 0
    },
    "altseo-ai-alt-text-generator": {
-    "negative_expected": 5,
-    "negative_parsed": 5,
+    "negative_expected": 3,
+    "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 65
+    "total_reviews_seen": 64
    },
    "alttext-ai": {
     "negative_expected": 15,
