@@ -216,7 +216,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 226
+    "total_reviews_seen": 228
    },
    "altguard-1": {
     "negative_expected": 0,
@@ -230,7 +230,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 64
+    "total_reviews_seen": 63
    },
    "alttext-ai": {
     "negative_expected": 15,
