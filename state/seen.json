@@ -76,7 +76,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 44
+    "total_reviews_seen": 43
    },
    "accessibility-by-appifycommerce": {
     "negative_expected": 0,
@@ -216,7 +216,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 228
+    "total_reviews_seen": 224
    },
    "altguard-1": {
     "negative_expected": 0,
@@ -316,7 +316,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 40
+    "total_reviews_seen": 39
    },
    "kokua": {
     "negative_expected": 0,
@@ -346,7 +346,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 29
+    "total_reviews_seen": 28
    },
    "scanify-accessibility-scan": {
     "negative_expected": 0,
@@ -360,7 +360,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 323
+    "total_reviews_seen": 322
    },
    "semantic": {
     "negative_expected": 0,
@@ -423,7 +423,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 6
+    "total_reviews_seen": 4
    }
   }
  },
