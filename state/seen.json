@@ -377,11 +377,11 @@
     "total_reviews_seen": 1
    },
    "smartalt-ai-alt-text": {
-    "negative_expected": 1,
-    "negative_parsed": 1,
+    "negative_expected": 2,
+    "negative_parsed": 2,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 7
+    "total_reviews_seen": 8
    },
    "tawnywatch": {
     "negative_expected": 0,
@@ -483,6 +483,7 @@
   "shopify:sea-accessibility-ada-wcag:1827421",
   "shopify:shoplab-accessibility-check:2047848",
   "shopify:smartalt-ai-alt-text:2303708",
+  "shopify:smartalt-ai-alt-text:2391453",
   "shopify:userway-accessibility:1588515",
   "shopify:userway-accessibility:1735740",
   "shopify:userway-accessibility:1818136"
