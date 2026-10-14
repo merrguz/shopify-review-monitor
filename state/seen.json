@@ -132,7 +132,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 4
+    "total_reviews_seen": 5
    },
    "accessify-web-accessibility": {
     "negative_expected": 0,
@@ -216,7 +216,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 230
+    "total_reviews_seen": 234
    },
    "altguard-1": {
     "negative_expected": 0,
@@ -237,7 +237,7 @@
     "negative_parsed": 15,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 141
+    "total_reviews_seen": 142
    },
    "clearpath-accessibility": {
     "negative_expected": 0,
