@@ -104,14 +104,14 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 57
+    "total_reviews_seen": 58
    },
    "accessibilityway": {
     "negative_expected": 0,
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 41
+    "total_reviews_seen": 42
    },
    "accessibly-app": {
     "negative_expected": 3,
