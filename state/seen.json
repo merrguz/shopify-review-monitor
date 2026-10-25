@@ -104,7 +104,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 59
+    "total_reviews_seen": 60
    },
    "accessibilityway": {
     "negative_expected": 0,
@@ -321,10 +321,8 @@
    "kokua": {
     "negative_expected": 0,
     "negative_parsed": 0,
-    "notes": [
-     "could not fetch reviews page: gave up on https://apps.shopify.com/kokua/reviews after 4 attempts: 429 rate limited"
-    ],
-    "ok": false,
+    "notes": [],
+    "ok": true,
     "total_reviews_seen": 0
    },
    "navible-bfsg-scanner": {
@@ -423,11 +421,9 @@
    "web-accessibility-by-wawsome": {
     "negative_expected": 0,
     "negative_parsed": 0,
-    "notes": [
-     "could not fetch reviews page: gave up on https://apps.shopify.com/web-accessibility-by-wawsome/reviews after 4 attempts: 429 rate limited"
-    ],
-    "ok": false,
-    "total_reviews_seen": 0
+    "notes": [],
+    "ok": true,
+    "total_reviews_seen": 4
    }
   }
  },
