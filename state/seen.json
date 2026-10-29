@@ -244,10 +244,8 @@
    "clearpath-accessibility": {
     "negative_expected": 0,
     "negative_parsed": 0,
-    "notes": [
-     "could not fetch reviews page: 404 not found: https://apps.shopify.com/clearpath-accessibility/reviews"
-    ],
-    "ok": false,
+    "notes": [],
+    "ok": true,
     "total_reviews_seen": 0
    },
    "clevyre-accessibility-widget": {
@@ -337,10 +335,8 @@
    "paperfort": {
     "negative_expected": 0,
     "negative_parsed": 0,
-    "notes": [
-     "could not fetch reviews page: 404 not found: https://apps.shopify.com/paperfort/reviews"
-    ],
-    "ok": false,
+    "notes": [],
+    "ok": true,
     "total_reviews_seen": 0
    },
    "patrol": {
