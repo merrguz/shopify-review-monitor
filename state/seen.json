@@ -165,8 +165,10 @@
    "accessproof-2": {
     "negative_expected": 0,
     "negative_parsed": 0,
-    "notes": [],
-    "ok": true,
+    "notes": [
+     "could not fetch reviews page: 404 not found: https://apps.shopify.com/accessproof-2/reviews"
+    ],
+    "ok": false,
     "total_reviews_seen": 0
    },
    "accessradar": {
@@ -360,7 +362,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 329
+    "total_reviews_seen": 330
    },
    "semantic": {
     "negative_expected": 0,
