@@ -266,7 +266,8 @@ Handle gotchas already baked in, since these are easy to guess wrong:
 - accessiBe is **`accesswidget`**, not `accessibe`
 - Clvyr is **`clevyre-accessibility-widget`** (slug spells out the "e"s)
 - Amrita is **`accessibility-widget`** (deceptively generic)
-- `accessproof-1` and `accessproof-2` are two different listings
+- `accessproof-2` was a separate listing from `accessproof-1`; it was delisted
+  (404) on 2026-10-29 and removed
 - **AudioEye's listing is delisted** and **EqualWeb has no Shopify listing** —
   neither is monitorable here. They only show up via Trustpilot/G2.
 

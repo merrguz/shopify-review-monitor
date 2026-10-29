@@ -292,7 +292,7 @@ def test_alt_text_bucket_is_enabled_and_gdpr_is_not():
     buckets = {a["bucket"] for a in cfg.apps}
     assert "alt-text" in buckets
     assert "gdpr-bundle" not in buckets
-    assert len(cfg.apps) == 60
+    assert len(cfg.apps) == 59
     alt = [a for a in cfg.apps if a["bucket"] == "alt-text"]
     assert len(alt) == 7
     assert "alttext-ai" in {a["handle"] for a in alt}

@@ -159,9 +159,6 @@ apps:
   - handle: accessproof-1
     name: AccessProof
     bucket: scanner
-  - handle: accessproof-2
-    name: AccessProof ADA Accessibility   # distinct listing from accessproof-1
-    bucket: scanner
   - handle: accessradar
     name: AccessRadar
     bucket: scanner
