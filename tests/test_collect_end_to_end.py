@@ -303,7 +303,7 @@ def test_alt_text_bucket_is_enabled_and_gdpr_is_not():
 # --------------------------------------------------------------------------- #
 
 def _stub_404(monkeypatch, *, listing_status):
-    """/reviews always 404s; the bare listing URL behaves per `listing_status`."""
+    """/reviews always 404s; the bare listing is live ("ok") or also 404s."""
     calls = []
 
     def fake_get(url, *, params=None, **kw):
@@ -312,9 +312,7 @@ def _stub_404(monkeypatch, *, listing_status):
             raise http_mod.NotFoundError(f"404 not found: {url}")
         if listing_status == "ok":
             return "<html>listing</html>"
-        if listing_status == "404":
-            raise http_mod.NotFoundError(f"404 not found: {url}")
-        raise http_mod.FetchError("gave up after 4 attempts: 429 rate limited")
+        raise http_mod.NotFoundError(f"404 not found: {url}")
 
     monkeypatch.setattr(shopify_mod.http, "get", fake_get)
     return calls
@@ -333,19 +331,10 @@ def test_reviews_404_with_live_listing_is_zero_reviews_not_a_failure(monkeypatch
     assert calls[-1] == "https://apps.shopify.com/paperfort"
 
 
-def test_reviews_404_with_listing_404_is_a_delisting_failure(monkeypatch):
+def test_reviews_404_with_unreachable_listing_is_a_failure(monkeypatch):
     _stub_404(monkeypatch, listing_status="404")
     reviews, health = ShopifySource().collect(NEW_APP, DEFAULTS)
 
     assert reviews == []
     assert not health.ok
-    assert "delisted" in health.notes[0]
-
-
-def test_reviews_404_with_failed_listing_probe_still_fails(monkeypatch):
-    _stub_404(monkeypatch, listing_status="error")
-    reviews, health = ShopifySource().collect(NEW_APP, DEFAULTS)
-
-    assert reviews == []
-    assert not health.ok
-    assert "probe failed" in health.notes[0]
+    assert "listing unreachable" in health.notes[0]

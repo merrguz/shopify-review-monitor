@@ -438,29 +438,17 @@ class ShopifySource:
 
         try:
             html = http.get(url)
-        except http.NotFoundError as exc:
-            # A 404 on /reviews does NOT mean the app is gone. Newly launched
-            # listings with no reviews can 404 here while the listing itself is
-            # live (observed 2026-10: clearpath-accessibility, paperfort,
-            # accessproof-2). Probe the listing page: if it exists, this app has
-            # no reviews page yet, which is the same as zero reviews. Only a
-            # listing that 404s too is a genuine delisting worth alerting on.
+        except http.NotFoundError:
+            # New listings with no reviews can 404 on /reviews while the listing
+            # is live. That's zero reviews, not a delisting; only a listing that
+            # is also unreachable is a failure. (Log, don't add a note: any note
+            # triggers a Slack alert.)
             try:
                 http.get(f"{BASE}/{handle}")
-            except http.NotFoundError:
-                health.fail(f"listing no longer exists (delisted?): {exc}")
-                return [], health
-            except http.FetchError as probe_exc:
-                health.fail(
-                    f"reviews page 404'd and listing probe failed: {probe_exc}"
-                )
-                return [], health
-            # Log only: any entry in health.notes triggers a Slack alert, and
-            # this is an expected state, not something to page about.
-            log.info(
-                "%s: reviews page 404s but listing is live; treating as no reviews yet",
-                handle,
-            )
+            except http.FetchError as exc:
+                health.fail(f"reviews page 404 and listing unreachable: {exc}")
+            else:
+                log.info("%s: no reviews page yet, listing is live", handle)
             return [], health
         except http.FetchError as exc:
             health.fail(f"could not fetch reviews page: {exc}")
