@@ -296,3 +296,56 @@ def test_alt_text_bucket_is_enabled_and_gdpr_is_not():
     alt = [a for a in cfg.apps if a["bucket"] == "alt-text"]
     assert len(alt) == 7
     assert "alttext-ai" in {a["handle"] for a in alt}
+
+
+# --------------------------------------------------------------------------- #
+# 404 handling: a missing /reviews page is not the same as a delisted app
+# --------------------------------------------------------------------------- #
+
+def _stub_404(monkeypatch, *, listing_status):
+    """/reviews always 404s; the bare listing URL behaves per `listing_status`."""
+    calls = []
+
+    def fake_get(url, *, params=None, **kw):
+        calls.append(url)
+        if url.endswith("/reviews"):
+            raise http_mod.NotFoundError(f"404 not found: {url}")
+        if listing_status == "ok":
+            return "<html>listing</html>"
+        if listing_status == "404":
+            raise http_mod.NotFoundError(f"404 not found: {url}")
+        raise http_mod.FetchError("gave up after 4 attempts: 429 rate limited")
+
+    monkeypatch.setattr(shopify_mod.http, "get", fake_get)
+    return calls
+
+
+NEW_APP = {"handle": "paperfort", "name": "Paperfort", "bucket": "scanner"}
+
+
+def test_reviews_404_with_live_listing_is_zero_reviews_not_a_failure(monkeypatch):
+    calls = _stub_404(monkeypatch, listing_status="ok")
+    reviews, health = ShopifySource().collect(NEW_APP, DEFAULTS)
+
+    assert reviews == []
+    assert health.ok
+    assert health.notes == []  # any note would trigger a Slack alert
+    assert calls[-1] == "https://apps.shopify.com/paperfort"
+
+
+def test_reviews_404_with_listing_404_is_a_delisting_failure(monkeypatch):
+    _stub_404(monkeypatch, listing_status="404")
+    reviews, health = ShopifySource().collect(NEW_APP, DEFAULTS)
+
+    assert reviews == []
+    assert not health.ok
+    assert "delisted" in health.notes[0]
+
+
+def test_reviews_404_with_failed_listing_probe_still_fails(monkeypatch):
+    _stub_404(monkeypatch, listing_status="error")
+    reviews, health = ShopifySource().collect(NEW_APP, DEFAULTS)
+
+    assert reviews == []
+    assert not health.ok
+    assert "probe failed" in health.notes[0]

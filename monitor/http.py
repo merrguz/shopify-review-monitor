@@ -27,6 +27,10 @@ class FetchError(RuntimeError):
     pass
 
 
+class NotFoundError(FetchError):
+    """The server answered 404. Callers decide whether that means "delisted"."""
+
+
 def get(
     url: str,
     *,
@@ -56,8 +60,9 @@ def get(
             elif resp.status_code >= 500:
                 last_err = f"{resp.status_code} server error"
             elif resp.status_code == 404:
-                # Genuinely gone (delisted app). Don't burn retries on it.
-                raise FetchError(f"404 not found: {resp.url}")
+                # Don't burn retries on it. Whether a 404 means "delisted" or just
+                # "no reviews page yet" is the caller's call -- see ShopifySource.
+                raise NotFoundError(f"404 not found: {resp.url}")
             elif resp.status_code != 200:
                 last_err = f"{resp.status_code}"
             elif len(resp.text) < min_bytes:
