@@ -111,7 +111,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 43
+    "total_reviews_seen": 44
    },
    "accessibly-app": {
     "negative_expected": 3,
@@ -218,7 +218,7 @@
     "negative_parsed": 2,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 238
+    "total_reviews_seen": 237
    },
    "altguard-1": {
     "negative_expected": 0,
@@ -232,7 +232,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 62
+    "total_reviews_seen": 61
    },
    "alttext-ai": {
     "negative_expected": 15,
@@ -358,7 +358,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 330
+    "total_reviews_seen": 329
    },
    "semantic": {
     "negative_expected": 0,
