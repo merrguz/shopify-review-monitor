@@ -20,7 +20,7 @@
     "negative_parsed": 2,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 96
+    "total_reviews_seen": 95
    },
    "access-readiness-doctor": {
     "negative_expected": 0,
@@ -204,7 +204,7 @@
     "negative_parsed": 1,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 12
+    "total_reviews_seen": 11
    },
    "all-in-one-accessibility": {
     "negative_expected": 0,
