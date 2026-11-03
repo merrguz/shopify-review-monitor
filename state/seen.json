@@ -111,7 +111,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 45
+    "total_reviews_seen": 46
    },
    "accessibly-app": {
     "negative_expected": 3,
@@ -358,7 +358,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 330
+    "total_reviews_seen": 331
    },
    "semantic": {
     "negative_expected": 0,
