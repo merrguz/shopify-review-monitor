@@ -139,7 +139,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 44
+    "total_reviews_seen": 45
    },
    "accessifyai": {
     "negative_expected": 0,
@@ -358,7 +358,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 330
+    "total_reviews_seen": 331
    },
    "semantic": {
     "negative_expected": 0,
@@ -368,11 +368,11 @@
     "total_reviews_seen": 0
    },
    "shoplab-accessibility-check": {
-    "negative_expected": 1,
-    "negative_parsed": 1,
+    "negative_expected": 0,
+    "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 1
+    "total_reviews_seen": 0
    },
    "smartalt-ai-alt-text": {
     "negative_expected": 2,
