@@ -139,7 +139,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 45
+    "total_reviews_seen": 44
    },
    "accessifyai": {
     "negative_expected": 0,
@@ -358,7 +358,7 @@
     "negative_parsed": 3,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 331
+    "total_reviews_seen": 330
    },
    "semantic": {
     "negative_expected": 0,
