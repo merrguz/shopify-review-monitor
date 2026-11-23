@@ -20,7 +20,7 @@
     "negative_parsed": 2,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 98
+    "total_reviews_seen": 97
    },
    "access-readiness-doctor": {
     "negative_expected": 0,
@@ -104,7 +104,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 65
+    "total_reviews_seen": 66
    },
    "accessibilityway": {
     "negative_expected": 0,
@@ -218,7 +218,7 @@
     "negative_parsed": 2,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 240
+    "total_reviews_seen": 239
    },
    "altguard-1": {
     "negative_expected": 0,
@@ -267,7 +267,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 26
+    "total_reviews_seen": 27
    },
    "easy-accessibility-ada-aid": {
     "negative_expected": 0,
