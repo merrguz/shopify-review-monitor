@@ -90,7 +90,7 @@
     "negative_parsed": 8,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 72
+    "total_reviews_seen": 73
    },
    "accessibility-widget": {
     "negative_expected": 0,
@@ -104,7 +104,7 @@
     "negative_parsed": 0,
     "notes": [],
     "ok": true,
-    "total_reviews_seen": 66
+    "total_reviews_seen": 67
    },
    "accessibilityway": {
     "negative_expected": 0,
